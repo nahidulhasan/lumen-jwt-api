@@ -18,3 +18,7 @@ $router->get('/', function () use ($router) {
 
 
 $router->post('/auth/login', 'AuthController@loginPost');
+
+$router->get('/posts', 'PostController@index');
+$router->post('/posts', 'PostController@create');
+$router->put('/posts/{postId}', 'PostController@update');
