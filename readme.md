@@ -16,7 +16,7 @@ Basically this is a starter kit for you to integrate Lumen with JWT Authenticati
 	$ docker-compose exec php php artisan migrate --seed
 	```
 
-- Visit `localhost:8084`.
+- Visit `localhost:8084`
 
 
 
