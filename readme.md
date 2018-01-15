@@ -18,6 +18,17 @@ Basically this is a starter kit for you to integrate Lumen with JWT Authenticati
 
 - Visit `localhost:8084`
 
+> **Note:**
+- You can now deploy and use:
+- ```POST /auth/login``` –> with email and password, obtain a JWT token
+- ```GET /posts``` –> anyone gets a list of all the posts in the database
+- ```POST /posts``` –> any authenticated user (using JWT, for instance) can create a post
+- ```PUT /posts/:post_id ``` –> the Owner of :post_id (authenticated using JWT, for instance) can modify the post
+
+And remember, JWT requires you to provide the token as a header.
+
+
+
 
 
 
