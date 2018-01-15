@@ -9,6 +9,15 @@ Basically this is a starter kit for you to integrate Lumen with JWT Authenticati
 - Run composer install
 - Configure your .env file for authenticating via database
 - Run php artisan migrate --seed
+- Run docker-compose build
+- Run docker-compose up -d
+- Run the following command to populate database tables and seeds.
+
+	```bash
+	$ docker-compose exec php php artisan migrate --seed
+	```
+
+- Visit `localhost:8084`.
 
 
 
