@@ -125,7 +125,7 @@ return [
     | present in the payload.
     |
     */
-    'required_claims' => ['iss', 'iat', 'exp', 'nbf', 'sub', 'jti'],
+    'required_claims' => ['iss', 'iat', 'nbf', 'sub', 'jti'],
 
     /*
     |--------------------------------------------------------------------------

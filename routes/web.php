@@ -16,9 +16,16 @@ $router->get('/', function () use ($router) {
 });
 
 
-
 $router->post('/auth/login', 'AuthController@loginPost');
 
+//$router->post('/auth/login', ['middleware' => 'auth', 'AuthController@loginPost']);
+
 $router->get('/posts', 'PostController@index');
+
+//$router->get('/posts', ['middleware' => 'auth', 'PostController@index']);
+
 $router->post('/posts', 'PostController@create');
+
+//$router->post('/posts', ['middleware' => 'auth', 'PostController@create']);
+
 $router->put('/posts/{postId}', 'PostController@update');
