@@ -1,0 +1,13 @@
+/vendor
+/.idea
+/.phpintel
+Homestead.json
+Homestead.yaml
+.env
+.env.testing
+_ide_helper.php
+.phpstorm.meta.php
+.DS_Store
+app/.DS_Store
+database/.DS_Store
+
