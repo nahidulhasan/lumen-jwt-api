@@ -6,6 +6,7 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Exceptions\TokenExpiredException;
 use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 use Tymon\JWTAuth\JWTAuth;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -47,9 +48,28 @@ class AuthController extends Controller
             return response()->json(['token_absent' => $e->getMessage()], $e->getStatusCode());
         }
 
-        return response()->json(compact('token'));
+       // return response()->json(compact('token'));
+
+        $this->jwt->setToken($token);
+
+        return $this->respondWithToken($token);
     }
-    
+
+
+
+    /**
+     * Logout JWT
+     * @param Request $request
+     * @return array
+     * @throws \Tymon\JWTAuth\Exceptions\JWTException
+     */
+    public function logout(Request $request)
+    {
+        $this->jwt->parseToken()->invalidate();
+
+        return ['message'=>'token removed'] ;
+    }
+
 
     /**
      * Refresh a token.
@@ -58,7 +78,24 @@ class AuthController extends Controller
      */
     public function refresh()
     {
-        return $this->respondWithToken(auth()->refresh());
+        return $this->respondWithToken($this->jwt->refresh());
+    }
+
+
+    /**
+     * Get the token array structure.
+     *
+     * @param  string $token
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function respondWithToken($token)
+    {
+        return response()->json([
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' =>  $this->jwt->factory()->getTTL() * 60
+        ]);
     }
 
 
