@@ -14,12 +14,21 @@ class AuthController extends Controller
      */
     protected $jwt;
 
+    /**
+     * AuthController constructor.
+     * @param JWTAuth $jwt
+     */
     public function __construct(JWTAuth $jwt)
     {
         $this->jwt = $jwt;
     }
 
-    public function loginPost(Request $request)
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function login(Request $request)
     {
         $this->validate($request, [
             'email'    => 'required|email|max:255',
