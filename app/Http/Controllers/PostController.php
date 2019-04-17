@@ -24,6 +24,7 @@ class PostController extends Controller
      * Only if the Posts' policy allows it
      *
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function create()
     {
@@ -47,7 +48,9 @@ class PostController extends Controller
      * Update post<br>
      * Only if the Posts' policy allows it
      *
+     * @param $post_id
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update($post_id)
     {
